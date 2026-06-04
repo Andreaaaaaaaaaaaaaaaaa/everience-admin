@@ -18,7 +18,7 @@ router.post('/login', [
             error: {
                 code: 'VALIDATION_ERROR',
                 message: 'Campi di input non validi.', 
-                details: errors.array() /
+                details: errors.array() 
             }
         });
     }
