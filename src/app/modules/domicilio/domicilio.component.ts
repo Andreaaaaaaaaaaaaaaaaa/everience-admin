@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RisorseService } from './services/risorse.service';
+import { RisorseService } from '../../core/interceptors/services/risorse.service';
 import { CommonModule } from '@angular/common'; 
 import { GoogleMapsModule } from '@angular/google-maps'; 
 
@@ -31,7 +31,7 @@ export class DomicilioComponent implements OnInit {
 
   caricaRisorse() {
     this.risorseService.getAllRisorse().subscribe({
-      next: (res) => {
+      next: (res: any) => {
         if (res.success) {
           this.markers = res.data.map((r: any) => ({
             position: { lat: r.lat, lng: r.lng }, 
@@ -40,7 +40,7 @@ export class DomicilioComponent implements OnInit {
           }));
         }
       },
-      error: (err) => console.error('Errore caricamento risorse', err)
+      error: (err: any) => console.error('Errore caricamento risorse', err)
     });
   }
 
